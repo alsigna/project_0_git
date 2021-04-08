@@ -43,5 +43,31 @@ def game_core_v3(number):
     return count
 
 
+def game_core_v4(number):
+    """Guessing based on Binary Search.
+
+    Args:
+        number (int): Number to guess
+
+    Returns:
+        int: Number of attempts
+    """
+    left = 0
+    right = MAX_NUMBER + 1
+    count = 1
+    predict = MAX_NUMBER // 2
+
+    while number != predict:
+        count += 1
+        if predict < number:
+            left = predict
+        else:
+            right = predict
+        predict = (left + right) // 2
+
+    return count
+
+
 if __name__ == "__main__":
     score_game(game_core_v3)
+    score_game(game_core_v4)
